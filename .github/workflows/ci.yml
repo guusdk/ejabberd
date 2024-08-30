@@ -17,6 +17,7 @@ on:
     - 'man/**'
     - 'priv/**'
     - '**.md'
+    - '**.no-op'
 
 jobs:
 
