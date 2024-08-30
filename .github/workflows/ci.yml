@@ -132,23 +132,25 @@ jobs:
     - run: make options
     - run: make xref
 
-    - name: Check Production Release
-      run: |
-        make rel
-        RE=_build/prod/rel/ejabberd
-        $RE/bin/ejabberdctl start
-        $RE/bin/ejabberdctl started
-        $RE/bin/ejabberdctl stop
-        $RE/bin/ejabberdctl stopped
-        cat $RE/logs/ejabberd.log
-        grep -q "is stopped in" $RE/logs/ejabberd.log
-
-    - name: Check Development Release
+    - name: Start Development Release
       run: |
         make dev
         RE=_build/dev/rel/ejabberd
         $RE/bin/ejabberdctl start
         $RE/bin/ejabberdctl started
+        cat $RE/logs/ejabberd.log
+        grep -q "is started in" $RE/logs/ejabberd.log
+
+    - name: Run XMPP Interoperability Tests against CI server.
+      uses: XMPP-Interop-Testing/xmpp-interop-tests-action@main
+      with:
+        domain: 'localhost'
+        adminAccountUsername: 'admin'
+        adminAccountPassword: 'admin'
+
+    - name: Stop Development Release
+      run: |
+        RE=_build/dev/rel/ejabberd
         $RE/bin/ejabberdctl stop
         $RE/bin/ejabberdctl stopped
         cat $RE/logs/ejabberd.log
