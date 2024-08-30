@@ -148,7 +148,7 @@ jobs:
       with:
         domain: 'localhost'
         adminAccountUsername: 'admin'
-        adminAccountPassword: 'admin'
+        adminAccountPassword: 'password'
 
     - name: Stop Development Release
       run: |
