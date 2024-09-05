@@ -150,7 +150,7 @@ jobs:
         domain: 'localhost'
         adminAccountUsername: 'admin'
         adminAccountPassword: 'admin'
-        disabledSpecifications: 'RFC6120,RFC6121,XEP-0030,XEP-0045,XEP-0048,XEP-0050,XEP-0054,XEP-0060,XEP-0080,XEP-0085,XEP-0092,XEP-0096,XEP-0107,XEP-0115,XEP-0118,XEP-0198,XEP-0199,XEP-0215,XEP-0232,XEP-0313,XEP-0352,XEP-0363,XEP-0374,XEP-0384'
+        disabledSpecifications: 'RFC6120,RFC6121,XEP-0030,XEP-0045,XEP-0048,XEP-0050,XEP-0054,XEP-0060,XEP-0080,XEP-0085,XEP-0092,XEP-0096,XEP-0107'
 
     - name: Stop Development Release
       run: |
