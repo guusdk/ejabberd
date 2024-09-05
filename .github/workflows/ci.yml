@@ -137,7 +137,7 @@ jobs:
         make dev
         RE=_build/dev/rel/ejabberd
         sed -i 's/starttls_required: true/starttls_required: false/g'  $RE/conf/ejabberd.yml
-        sed -i 's/loglevel: info/loglevel: debug/g'  $RE/conf/ejabberd.yml
+        sed -i 's/loglevel: info/loglevel: debug\nlog_rotate_size: infinity/g'  $RE/conf/ejabberd.yml
         cat $RE/conf/ejabberd.yml
         $RE/bin/ejabberdctl start
         $RE/bin/ejabberdctl started
