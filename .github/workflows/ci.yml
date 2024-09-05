@@ -150,7 +150,6 @@ jobs:
         domain: 'localhost'
         adminAccountUsername: 'admin'
         adminAccountPassword: 'admin'
-        disabledSpecifications: 'XEP-0115,XEP-0118,XEP-0198,XEP-0199,XEP-0215,XEP-0232,XEP-0313,XEP-0352,XEP-0363,XEP-0374,XEP-0384'
 
     - name: Stop Development Release
       run: |
@@ -159,3 +158,10 @@ jobs:
         $RE/bin/ejabberdctl stopped
         cat $RE/logs/ejabberd.log
         grep -q "is stopped in" $RE/logs/ejabberd.log
+
+    - name: Upload ejabberd logs as an artifact
+      if: always() # Especially when the tests fail, it's desirable to have access to these reports!
+      uses: actions/upload-artifact@v4
+      with:
+        name: ejabberd log
+        path: _build/dev/rel/ejabberd/logs/ejabberd.log
