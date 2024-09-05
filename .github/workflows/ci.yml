@@ -145,7 +145,7 @@ jobs:
         grep -q "is started in" $RE/logs/ejabberd.log
 
     - name: Run XMPP Interoperability Tests against CI server.
-      uses: XMPP-Interop-Testing/xmpp-interop-tests-action@v1.3.3
+      uses: XMPP-Interop-Testing/xmpp-interop-tests-action@v1.3.4
       with:
         domain: 'localhost'
         adminAccountUsername: 'admin'
